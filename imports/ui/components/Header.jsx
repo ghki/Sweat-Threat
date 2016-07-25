@@ -1,19 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import LoginButtons from './LoginButtons.jsx';
 
 export default class Header extends React.Component {
   render() {
+    let navStyle = {
+        paddingLeft: "12px"
+    };
+    
     return (
-      <header className='Header'>
-        <b>Header</b> &nbsp;
-        <Link to="/">Home</Link> &nbsp;
-        <Link to="about">About Page</Link> &nbsp;
-        <Link to="bad-url">Not Found Page</Link> &nbsp;
-
-        <LoginButtons align='left' />
-      </header>
+      <nav style={navStyle}>
+        <div className="nav-wrapper">
+          <a href="#" className="brand-logo">Logo</a>
+          <ul id="nav-mobile" className="right hide-on-med-and-down">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="about">About Page</Link></li>
+            <li><Link to="bad-url">Not Found Page</Link></li>
+            <li><Link to="register">Register</Link></li>
+          </ul>
+        </div>
+      </nav>
     );
   }
 }
