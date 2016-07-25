@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import LoginButtons from './LoginButtons.jsx'
 
 
 export default class Header extends React.Component {
@@ -15,8 +16,7 @@ export default class Header extends React.Component {
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li><Link to="/">Home</Link></li>
             <li><Link to="about">About Page</Link></li>
-            <li><Link to="bad-url">Not Found Page</Link></li>
-            <li><Link to="register">Register</Link></li>
+            <LoginButtons align='left' />
           </ul>
         </div>
       </nav>
