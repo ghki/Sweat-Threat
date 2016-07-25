@@ -1,2 +1,2 @@
 import './User.js';
-import './Threat.js';
+import './Threat/Threat.js';
