@@ -1,0 +1,92 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/Users/danho/.meteor/packages/meteor-tool/.1.3.2_4.eshbx7++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   'accounts-facebook' ]
+2 info using npm@2.14.22
+3 info using node@v0.10.43
+4 verbose install initial load of /Users/danho/GitHub/Sweat-Threat/package.json
+5 verbose installManyTop reading scoped package data from /Users/danho/GitHub/Sweat-Threat/node_modules/classnames/package.json
+6 verbose installManyTop reading scoped package data from /Users/danho/GitHub/Sweat-Threat/node_modules/history/package.json
+7 verbose installManyTop reading scoped package data from /Users/danho/GitHub/Sweat-Threat/node_modules/react/package.json
+8 verbose installManyTop reading scoped package data from /Users/danho/GitHub/Sweat-Threat/node_modules/react-dom/package.json
+9 verbose installManyTop reading scoped package data from /Users/danho/GitHub/Sweat-Threat/node_modules/react-router/package.json
+10 verbose readDependencies loading dependencies from /Users/danho/GitHub/Sweat-Threat/package.json
+11 silly cache add args [ 'accounts-facebook', null ]
+12 verbose cache add spec accounts-facebook
+13 silly cache add parsed spec { raw: 'accounts-facebook',
+13 silly cache add   scope: null,
+13 silly cache add   name: 'accounts-facebook',
+13 silly cache add   rawSpec: '',
+13 silly cache add   spec: 'latest',
+13 silly cache add   type: 'tag' }
+14 silly addNamed accounts-facebook@latest
+15 verbose addNamed "latest" is being treated as a dist-tag for accounts-facebook
+16 info addNameTag [ 'accounts-facebook', 'latest' ]
+17 silly mapToRegistry name accounts-facebook
+18 silly mapToRegistry using default registry
+19 silly mapToRegistry registry https://registry.npmjs.org/
+20 silly mapToRegistry uri https://registry.npmjs.org/accounts-facebook
+21 verbose addNameTag registry:https://registry.npmjs.org/accounts-facebook not in flight; fetching
+22 verbose request uri https://registry.npmjs.org/accounts-facebook
+23 verbose request no auth needed
+24 info attempt registry request try #1 at 14:08:29
+25 verbose request id fe24be2bf07f7085
+26 http request GET https://registry.npmjs.org/accounts-facebook
+27 http 404 https://registry.npmjs.org/accounts-facebook
+28 verbose headers { 'content-type': 'application/json',
+28 verbose headers   'cache-control': 'max-age=0',
+28 verbose headers   'content-length': '2',
+28 verbose headers   'accept-ranges': 'bytes',
+28 verbose headers   date: 'Mon, 25 Jul 2016 21:08:29 GMT',
+28 verbose headers   via: '1.1 varnish',
+28 verbose headers   age: '0',
+28 verbose headers   connection: 'keep-alive',
+28 verbose headers   'x-served-by': 'cache-den6022-DEN',
+28 verbose headers   'x-cache': 'MISS',
+28 verbose headers   'x-cache-hits': '0',
+28 verbose headers   'x-timer': 'S1469480909.165579,VS0,VE265',
+28 verbose headers   vary: 'Accept-Encoding' }
+29 silly get cb [ 404,
+29 silly get   { 'content-type': 'application/json',
+29 silly get     'cache-control': 'max-age=0',
+29 silly get     'content-length': '2',
+29 silly get     'accept-ranges': 'bytes',
+29 silly get     date: 'Mon, 25 Jul 2016 21:08:29 GMT',
+29 silly get     via: '1.1 varnish',
+29 silly get     age: '0',
+29 silly get     connection: 'keep-alive',
+29 silly get     'x-served-by': 'cache-den6022-DEN',
+29 silly get     'x-cache': 'MISS',
+29 silly get     'x-cache-hits': '0',
+29 silly get     'x-timer': 'S1469480909.165579,VS0,VE265',
+29 silly get     vary: 'Accept-Encoding' } ]
+30 verbose stack Error: Registry returned 404 for GET on https://registry.npmjs.org/accounts-facebook
+30 verbose stack     at makeError (/Users/danho/.meteor/packages/meteor-tool/.1.3.2_4.eshbx7++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+30 verbose stack     at CachingRegistryClient.<anonymous> (/Users/danho/.meteor/packages/meteor-tool/.1.3.2_4.eshbx7++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:242:14)
+30 verbose stack     at Request._callback (/Users/danho/.meteor/packages/meteor-tool/.1.3.2_4.eshbx7++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+30 verbose stack     at Request.self.callback (/Users/danho/.meteor/packages/meteor-tool/.1.3.2_4.eshbx7++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/npm/node_modules/request/request.js:199:22)
+30 verbose stack     at Request.emit (events.js:98:17)
+30 verbose stack     at Request.<anonymous> (/Users/danho/.meteor/packages/meteor-tool/.1.3.2_4.eshbx7++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/npm/node_modules/request/request.js:1036:10)
+30 verbose stack     at Request.emit (events.js:117:20)
+30 verbose stack     at IncomingMessage.<anonymous> (/Users/danho/.meteor/packages/meteor-tool/.1.3.2_4.eshbx7++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/lib/node_modules/npm/node_modules/request/request.js:963:12)
+30 verbose stack     at IncomingMessage.emit (events.js:117:20)
+30 verbose stack     at _stream_readable.js:944:16
+31 verbose statusCode 404
+32 verbose pkgid accounts-facebook
+33 verbose cwd /Users/danho/GitHub/Sweat-Threat
+34 error Darwin 15.6.0
+35 error argv "node" "/Users/danho/.meteor/packages/meteor-tool/.1.3.2_4.eshbx7++os.osx.x86_64+web.browser+web.cordova/mt-os.osx.x86_64/dev_bundle/bin/npm" "install" "--save" "accounts-facebook"
+36 error node v0.10.43
+37 error npm  v2.14.22
+38 error code E404
+39 error 404 Registry returned 404 for GET on https://registry.npmjs.org/accounts-facebook
+39 error 404
+39 error 404 'accounts-facebook' is not in the npm registry.
+39 error 404 You should bug the author to publish it (or use the name yourself!)
+39 error 404 It was specified as a dependency of 'meteor-react-boilerplate'
+39 error 404
+39 error 404 Note that you can also install from a
+39 error 404 tarball, folder, http url, or git url.
+40 verbose exit [ 1, true ]
