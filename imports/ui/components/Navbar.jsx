@@ -15,7 +15,7 @@ export default class Navbar extends React.Component {
           <a href="/" className="brand-logo">Sweat Threat</a>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li><Link to="/about">About</Link> </li>
-            <li><AccountsUIWrapper /> </li>
+            <li><AccountsUIWrapper/></li>
           </ul>
         </div>
       </nav>
