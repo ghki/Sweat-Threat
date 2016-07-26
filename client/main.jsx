@@ -1,10 +1,25 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { render } from 'react-dom';
+import { Router, browserHistory } from 'react-router';
+import ReactDOM from 'react-dom';
+import { createHistory, useBasename } from 'history';
+
+import routes from '../imports/router/routes.js';
+import MainLayout from '../imports/ui/containers/MainLayout.jsx';
 
 import '../imports/startup/accounts-config.js';
-import App from '../imports/ui/App.jsx';
+//import ThreatForm from '../imports/ui/components/ThreatForm.jsx';
+
+const rootRoute = {
+  component: MainLayout,
+  childRoutes: routes,
+};
 
 Meteor.startup(() => {
-  render(<App />, document.getElementById('render-target'));
+  ReactDOM.render(
+    <Router history={browserHistory} routes={rootRoute} />,
+  	//<ThreatForm />, 
+  	document.getElementById('render-target')
+  	);
 });

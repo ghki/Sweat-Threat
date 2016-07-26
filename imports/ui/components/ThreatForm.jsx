@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 
-import { Threats } from '../api/threats.js';
+import { Threats } from '../../api/threats.js';
 
-import Threat from './Threat.jsx';
-import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+import Threat from '../pages/Threat.jsx';
+import AccountsUIWrapper from '../AccountsUIWrapper.jsx';
 
-// App component - represents the whole app
-class App extends Component {
+// ThreatForm component
+export default class ThreatForm extends Component {
   constructor(props) {
     super(props);
 
@@ -92,7 +92,7 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
+ThreatForm.propTypes = {
   threats: PropTypes.array.isRequired,
   incompleteCount: PropTypes.number.isRequired,
   currentUser: PropTypes.object,
@@ -106,4 +106,4 @@ export default createContainer(() => {
     incompleteCount: Threats.find({ checked: { $ne: true } }).count(),
     currentUser: Meteor.user(),
   };
-}, App);
+}, ThreatForm);
