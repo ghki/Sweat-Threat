@@ -14,7 +14,9 @@ export default class Header extends React.Component {
         <div className="nav-wrapper">
           <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li><Link to="/">Home</Link></li>
-            <li><Link to="about">About Page</Link></li>
+            { this.props.currentUser ?
+              <li><Link to="/profile">Profile</Link></li> : ''
+            }
             <LoginButtons />
           </ul>
         </div>

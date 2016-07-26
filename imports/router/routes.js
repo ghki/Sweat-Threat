@@ -1,7 +1,7 @@
 import Home from '../ui/pages/Home.jsx';
 import About from '../ui/pages/About.jsx';
 import NotFound from '../ui/pages/NotFound.jsx';
-import Register from '../ui/pages/Register.jsx';
+import Profile from '../ui/pages/Profile.jsx';
 
 const routes = [
   {
@@ -13,8 +13,8 @@ const routes = [
     component: About
   },
   {
-    path: '/register',
-    component: Register
+    path: '/profile',
+    component: Profile
   }, 
   {
     path: '*',

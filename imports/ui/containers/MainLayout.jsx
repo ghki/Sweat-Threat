@@ -5,7 +5,7 @@ export default class MainLayout extends React.Component {
   render() {
     return (
       <div>
-        <Header />
+        <Header currentUser={Meteor.userId()} />
         <main>{this.props.children}</main>
       </div>
     );
