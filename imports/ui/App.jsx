@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 
-import { Tasks } from '../api/tasks.js';
+import { Threats } from '../api/threats.js';
 
-import Task from './Task.jsx';
+import Threat from './Threat.jsx';
 import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
 // App component - represents the whole app
@@ -24,7 +24,7 @@ class App extends Component {
     // Find the text field via the React ref
     const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
 
-    Meteor.call('tasks.insert', text);
+    Meteor.call('threats.insert', text);
 
     // Clear form
     ReactDOM.findDOMNode(this.refs.textInput).value = '';
@@ -36,19 +36,19 @@ class App extends Component {
     });
   }
 
-  renderTasks() {
-    let filteredTasks = this.props.tasks;
+  renderThreats() {
+    let filteredThreats = this.props.threats;
     if (this.state.hideCompleted) {
-      filteredTasks = filteredTasks.filter(task => !task.checked);
+      filteredThreats = filteredThreats.filter(threat => !threat.checked);
     }
-    return filteredTasks.map((task) => {
+    return filteredThreats.map((threat) => {
       const currentUserId = this.props.currentUser && this.props.currentUser._id;
-      const showPrivateButton = task.owner === currentUserId;
+      const showPrivateButton = threat.owner === currentUserId;
 
       return (
-        <Task
-          key={task._id}
-          task={task}
+        <Threat
+          key={threat._id}
+          threat={threat}
           showPrivateButton={showPrivateButton}
         />
       );
@@ -59,7 +59,7 @@ class App extends Component {
     return (
       <div className="container">
         <header>
-          <h1>Todo List ({this.props.incompleteCount})</h1>
+          <h1>Threat List ({this.props.incompleteCount})</h1>
 
           <label className="hide-completed">
             <input
@@ -68,24 +68,24 @@ class App extends Component {
               checked={this.state.hideCompleted}
               onClick={this.toggleHideCompleted.bind(this)}
             />
-            Hide Completed Tasks
+            Hide Completed Threats
           </label>
 
           <AccountsUIWrapper />
 
           { this.props.currentUser ?
-            <form className="new-task" onSubmit={this.handleSubmit.bind(this)} >
+            <form className="new-threat" onSubmit={this.handleSubmit.bind(this)} >
               <input
                 type="text"
                 ref="textInput"
-                placeholder="Type to add new tasks"
+                placeholder="Type to add new threats"
               />
             </form> : ''
           }
         </header>
 
         <ul>
-          {this.renderTasks()}
+          {this.renderThreats()}
         </ul>
       </div>
     );
@@ -93,17 +93,17 @@ class App extends Component {
 }
 
 App.propTypes = {
-  tasks: PropTypes.array.isRequired,
+  threats: PropTypes.array.isRequired,
   incompleteCount: PropTypes.number.isRequired,
   currentUser: PropTypes.object,
 };
 
 export default createContainer(() => {
-  Meteor.subscribe('tasks');
+  Meteor.subscribe('threats');
 
   return {
-    tasks: Tasks.find({}, { sort: { createdAt: -1 } }).fetch(),
-    incompleteCount: Tasks.find({ checked: { $ne: true } }).count(),
+    threats: Threats.find({}, { sort: { createdAt: -1 } }).fetch(),
+    incompleteCount: Threats.find({ checked: { $ne: true } }).count(),
     currentUser: Meteor.user(),
   };
 }, App);
