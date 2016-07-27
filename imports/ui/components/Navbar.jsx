@@ -5,7 +5,7 @@ import AccountsUIWrapper from '../AccountsUIWrapper.jsx';
 export default class Navbar extends React.Component {
   render() {
     var navStyle = {
-      backgroundColor: "#f48fb1", 
+      backgroundColor: "#b2dfdb", 
       paddingLeft: "12px"
     };
 

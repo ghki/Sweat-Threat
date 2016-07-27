@@ -27,8 +27,20 @@ Meteor.methods({
 	Profiles.update(userId, { $set: { accountabilityPartner: accountabilityPartner } });
   },
 
-  'profiles.addThreat'(username, threat) {
+  'profiles.addThreat'( {username, threat} ) {
     Profiles.update(username, { $push: { threats: threat } });
-  }
+  },
+
+  'profiles.updateThreatStatus'(username, threatId, status) {
+    check(threatId, Number);
+    check(status, String);
+
+    //const threat = Profiles.findOne(username).threats;
+
+    Profiles.update( 
+      { username: username, "threats.threatId": threatId },
+      { $set: { "threats.$.status": status } }
+    )
+  },
 
 });
