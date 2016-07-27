@@ -43,24 +43,35 @@ export default class ThreatForm extends Component {
   // };
 
   render() {
+      $('.datepicker').pickadate({
+        selectYears: 1 
+        });
     return (
+
       <div className="container">
         <header>
           <h1>New Threat</h1>
 
           { this.props.currentUser ?
-            <form className="new-threat" onSubmit={this.handleSubmit.bind(this)} >
+            <form className="input-field col s6" onSubmit={this.handleSubmit.bind(this)} >
               <input
-                type="text"
+                id="datetime"
+                type="date"
                 ref="date_time"
-                placeholder="Add a date and time"
+                className="datepicker"
               />
+              <div className="row">
+        <div className="input-field col s12">
               <input
+                id="threatlocation"
                 type="text"
                 ref="location"
-                placeholder="Add a place"
+                className="validate"
               />
+              <label htmlFor="threatlocation">Location</label>
               <input className="modal-footer" type="submit" value="Submit"/>
+              </div>
+              </div>
             </form> : ''
           }
         </header>
