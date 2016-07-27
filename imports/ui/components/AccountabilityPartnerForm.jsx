@@ -1,9 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import { Profiles } from '../../api/profiles.js';
-import AccountabilityPartnerForm from './AccountabilityPartnerForm.jsx'
 
-export default class LoggedIn extends React.Component {
+export default class AccountabilityPartnerForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
@@ -18,15 +17,24 @@ export default class LoggedIn extends React.Component {
   render() {
     return (
       <div>
-          <h2>{this.props.userProfile.username}'s Profile</h2> 
           {
-            <AccountabilityPartnerForm userProfile={this.props.userProfile} />
-          }
+            this.props.userProfile.accountabilityPartner == "" ? 
+          <form className="input-field col s6" onSubmit={this.handleSubmit.bind(this)} >
+            <input
+              id="ap"
+              type="text"
+              ref="textInput"
+              className="validate"
+            />
+            <label htmlFor="ap">Accountability Partner</label>
+          </form>
+           : <span>accountabilityPartner: {this.props.userProfile.accountabilityPartner}</span>
+         }
       </div>
     );
   }
 }
 
-LoggedIn.propTypes = {
+AccountabilityPartnerForm.propTypes = {
   userProfile: PropTypes.object
 };
