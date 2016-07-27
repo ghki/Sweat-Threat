@@ -12,23 +12,23 @@ Meteor.methods({
     }
  
     Profiles.insert({
+	  userid: this.userId,
       username: Meteor.users.findOne(this.userId).username,
       accountabilityPartner: "",
-      threats: []
+      threats:[]
     });
-  },
+	},
 
   'profiles.remove'(username) {
     check(username, String);
     Profiles.remove(username);
   },
 
-  'profile.setAccountabilityPartner'(username, accountabilityPartner) {
-	Profiles.update(userId, { $set: { accountabilityPartner: accountabilityPartner } });
+  'profile.setAccountabilityPartner'(profileId, accountabilityPartner) {
+	Profiles.update(profileId, { $set: { accountabilityPartner: accountabilityPartner } });
   },
 
-  'profiles.addThreat'(username, threat) {
-    Profiles.update(username, { $push: { threats: threat } });
+  'profiles.addThreat'(profileId, threat) {
+    Profiles.update(profileId, { $push: { threats: threat } });
   }
-
 });
