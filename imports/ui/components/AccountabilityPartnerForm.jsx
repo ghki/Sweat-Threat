@@ -14,6 +14,12 @@ export default class AccountabilityPartnerForm extends React.Component {
     ReactDOM.findDOMNode(this.refs.textInput).value = '';
   }
 
+  handleEdit(event) {
+    event.preventDefault();
+    var docid = Profiles.findOne({userid:this.props.userProfile.userid});
+    Profiles.update(docid._id, { $set: { accountabilityPartner: ""} });
+  }
+
   render() {
     return (
       <div>
@@ -30,7 +36,9 @@ export default class AccountabilityPartnerForm extends React.Component {
           </form>
            : <div>
               <span>accountabilityPartner: {this.props.userProfile.accountabilityPartner} </span>
-              <a className="btn-floating btn-large waves-effect waves-light red"><i className="material-icons">mode_edit</i></a>
+              <a className="btn-floating waves-effect waves-light red" onClick={this.handleEdit.bind(this)} >
+                <i className="material-icons">mode_edit</i>
+              </a>
             </div>
          }
       </div>

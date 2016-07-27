@@ -19,28 +19,11 @@ export default class ThreatForm extends Component {
     const date_time = ReactDOM.findDOMNode(this.refs.date_time).value.trim();
     const location = ReactDOM.findDOMNode(this.refs.location).value.trim();
 
-    // const threatObject = {
-    //   date_time,
-    //   location
-    // };
-
-    // Meteor.call('profiles.addThreat', { userid:this.props.currentUser.userid, threat:threatObject } );
     Meteor.call('profiles.addThreat', { userid:this.props.currentUser._id, date_time:date_time, location:location } );
-
-
 
     $('#modal1').closeModal();
 
   }
-
-  // renderThreats() {
-  //   return (
-  //     <Profiles
-  //       key={threat.threatId}
-  //       threat={threat}
-  //     />
-  //   );
-  // };
 
   render() {
       $('.datepicker').pickadate({
