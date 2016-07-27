@@ -3,6 +3,7 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
 export const Profiles = new Mongo.Collection('profiles');
+
 Profiles.allow({
   insert: function(userId, doc) {
     // only allow posting if you are logged in
@@ -19,13 +20,13 @@ Profiles.allow({
 
 Meteor.methods({
   'profiles.insert'() {
-    // Make sure the user is logged in before inserting a task
+    // Make sure the user is logged in before inserting a threat
     if (!this.userId) {
       throw new Meteor.Error('not-authorized');
     }
  
     Profiles.insert({
-	  userid: this.userId,
+	    userid: this.userId,
       username: Meteor.users.findOne(this.userId).username,
       accountabilityPartner: "",
       threats:[]
@@ -41,8 +42,10 @@ Meteor.methods({
 	Profiles.update(profileId, { $set: { accountabilityPartner: accountabilityPartner } });
   },
 
-  'profiles.addThreat'( {username, threat} ) {
-    Profiles.update(username, { $push: { threats: threat } });
+  'profiles.addThreat'( {userid, date_time, location} ) {
+    let threat = {date_time: date_time, location: location};
+    var doc = Profiles.findOne({userid:userid});
+    Profiles.update(doc._id, { $push: { threats: threat } });
   },
 
   'profiles.updateThreatStatus'(username, threatId, status) {
@@ -54,6 +57,6 @@ Meteor.methods({
     Profiles.update( 
       { username: username, "threats.threatId": threatId },
       { $set: { "threats.$.status": status } }
-    )
+    );
   },
 });

@@ -1,4 +1,5 @@
 import React from 'react';
+import ThreatForm from './ThreatForm.jsx';
 
 export default class NewThreatModal extends React.Component {
   render() {
@@ -6,11 +7,7 @@ export default class NewThreatModal extends React.Component {
     return (
 		<div id="modal1" className="modal">
 			<div className="modal-content">
-				<h4>Threat</h4>
-				<p>LIVE IN FEAR</p>
-			</div>
-			<div className="modal-footer">
-				<a href="#!" className=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+				<ThreatForm />
 			</div>
 		</div>
     );
