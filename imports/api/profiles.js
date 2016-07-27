@@ -3,6 +3,19 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
 export const Profiles = new Mongo.Collection('profiles');
+Profiles.allow({
+  insert: function(userId, doc) {
+    // only allow posting if you are logged in
+    return !! userId;
+  }
+});
+
+Profiles.allow({
+  update: function(userId, doc) {
+    // only allow posting if you are logged in
+    return !! userId;
+  }
+});
 
 Meteor.methods({
   'profiles.insert'() {
@@ -12,19 +25,20 @@ Meteor.methods({
     }
  
     Profiles.insert({
+	  userid: this.userId,
       username: Meteor.users.findOne(this.userId).username,
       accountabilityPartner: "",
-      threats: []
+      threats:[]
     });
-  },
+	},
 
   'profiles.remove'(username) {
     check(username, String);
     Profiles.remove(username);
   },
 
-  'profile.setAccountabilityPartner'(username, accountabilityPartner) {
-	Profiles.update(userId, { $set: { accountabilityPartner: accountabilityPartner } });
+  'profile.setAccountabilityPartner'(profileId, accountabilityPartner) {
+	Profiles.update(profileId, { $set: { accountabilityPartner: accountabilityPartner } });
   },
 
   'profiles.addThreat'( {username, threat} ) {
@@ -42,5 +56,4 @@ Meteor.methods({
       { $set: { "threats.$.status": status } }
     )
   },
-
 });

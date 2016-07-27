@@ -43,22 +43,19 @@ export default class Profile extends React.Component {
 
 	render() {
 		$(document).ready(function(){
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.modal-trigger').leanModal();
-  });
+    		$('.modal-trigger').leanModal();
+  		});
 		return (
 			<div>
-			<div className="container">
-				<ul className="collection with-header">
-					<li className="collection-header">
-					<span>
-					<h4>My Threats</h4><button data-target="modal1" className="waves-effect waves-light btn modal-trigger">New Threat</button>
-					</span>
-					</li>
-					{this.renderThreats()}
-				</ul>
-			</div>
-			<NewThreatModal />
+				<div className="container">
+					<ul className="collection with-header">
+						<li className="collection-header">
+							<h4>My Threats <button data-target="modal1" className="btn modal-trigger">+</button></h4>
+						</li>
+						{this.renderThreats()}
+					</ul>
+				</div>
+				<NewThreatModal />
 			</div>
 		);
 	}
