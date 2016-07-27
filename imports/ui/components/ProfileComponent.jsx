@@ -16,7 +16,7 @@ export default class Test extends Component {
     return (
       <div>
           {
-            this.props.userProfile ? <LoggedIn userProfile={this.props.userProfile} /> : <LoggedOut/>
+            this.props.currentUser ? <LoggedIn userProfile={this.props.currentUser} /> : <LoggedOut/>
           }
       </div>
     );
@@ -24,13 +24,11 @@ export default class Test extends Component {
 }
 
 Test.propTypes = {
-  userProfile: PropTypes.object,
   currentUser: PropTypes.object,
 };
 
 export default createContainer(() => {
   return {
-    userProfile: Profiles.findOne({userid: Meteor.userId()}),
     currentUser: Meteor.user()
   };
 }, Test);
