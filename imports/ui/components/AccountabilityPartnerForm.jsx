@@ -28,7 +28,10 @@ export default class AccountabilityPartnerForm extends React.Component {
             />
             <label htmlFor="ap">Accountability Partner</label>
           </form>
-           : <span>accountabilityPartner: {this.props.userProfile.accountabilityPartner}</span>
+           : <div>
+              <span>accountabilityPartner: {this.props.userProfile.accountabilityPartner} </span>
+              <a className="btn-floating btn-large waves-effect waves-light red"><i className="material-icons">mode_edit</i></a>
+            </div>
          }
       </div>
     );
