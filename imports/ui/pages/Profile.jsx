@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import Threat from '../components/Threat.jsx';
+import ProfileComponent from '../components/ProfileComponent.jsx';
 import NewThreatModal from '../components/NewThreatModal.jsx';
 
 // shows option to add accountability partner
@@ -47,6 +48,7 @@ export default class Profile extends React.Component {
   		});
 		return (
 			<div>
+				<ProfileComponent />
 				<div className="container">
 					<ul className="collection with-header">
 						<li className="collection-header">

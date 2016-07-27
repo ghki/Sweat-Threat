@@ -12,16 +12,6 @@ export default class Test extends Component {
     super(props);
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    // Find the text field via the React ref
-    const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
-    
-    Profiles.update("DXq9aea8SkcnWxCGM", { $set: { accountabilityPartner: text} });
-    // Clear form
-    ReactDOM.findDOMNode(this.refs.textInput).value = '';
-  }
-
   render() {
     return (
       <div>

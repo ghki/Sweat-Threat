@@ -19,9 +19,7 @@ export default class LoggedIn extends React.Component {
     return (
       <div>
           <h2>{this.props.userProfile.username}'s Profile</h2> 
-          {
-            <AccountabilityPartnerForm userProfile={this.props.userProfile} />
-          }
+          <AccountabilityPartnerForm userProfile={this.props.userProfile} />
       </div>
     );
   }
