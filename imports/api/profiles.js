@@ -3,6 +3,19 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
 export const Profiles = new Mongo.Collection('profiles');
+Profiles.allow({
+  insert: function(userId, doc) {
+    // only allow posting if you are logged in
+    return !! userId;
+  }
+});
+
+Profiles.allow({
+  update: function(userId, doc) {
+    // only allow posting if you are logged in
+    return !! userId;
+  }
+});
 
 Meteor.methods({
   'profiles.insert'() {

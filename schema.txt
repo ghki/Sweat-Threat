@@ -1,29 +1,71 @@
-username: Meteor.users.findOne(this.userId).username,
-      accountabilityPartner: "haemi kim",
-      threats: 
-      [
-      	{
-			threatId: 1,
-			date: "June 27 2016",
-			checkedIn: true,
-			excuse: null,
-			isExcused: false,
-			status: "pass"
-      	},
-      	{
-			threatId: 2,
-			date: "June 28 2016",
-			checkedIn: true,
-			excuse: null,
-			isExcused: false,
-			status: "fail"
-      	},
-      	{
-			threatId: 3,
-			date: "June 29 2016",
-			checkedIn: true,
-			excuse: null,
-			isExcused: false,
-			status: "active"
-      	}
-      ]
+[
+{
+	ownerId: danho,
+	accountabilityPartner: haemi
+	threat: 
+	[
+		{
+			threatId: guid, 1
+			date: 07-26-2016 11:00AM
+			place: gym_location (?)
+			checkedIn: default->false,
+			excuse: default->””, “string”,
+			status: default->active, pending, pass, fail
+		},
+		{
+			threatId: 2
+			date:
+			checkedIn: false,
+			excuse: “string”,
+			isExcused: veto->false, accept-> true
+		},
+		{
+			threatId: 3
+			date:
+			checkedIn: false,
+			excuse: “string”,
+			isExcused: veto->false, accept-> true
+		}
+	],
+	notifications
+	[
+		{
+			username:
+		}
+	]
+},
+{
+	ownerId: haemi,
+	accountabilityPartner: 
+	schedule: 
+	[
+		{
+			date:
+			checkedIn:
+		},
+		{
+			date:
+			checkedIn:
+		},
+		{
+			date:
+			checkedIn:
+		}
+	],
+	notifications
+	[
+		{
+			username: “dan”,
+			threadId: 123,
+			excuse: “i failed”,
+			status: addressed/not addressed
+		},
+		{
+			username: “eric”,
+			threadId: 1234,
+			excuse: “i failed”,
+			status: addressed/not addressed
+		},
+	]
+},
+]
