@@ -7,7 +7,7 @@ export default class Responsibility extends Component {
 
 	isOverDue() {
     var now = new Date();
-		var ret = now >  new Date(this.props.responsibility.datetime);
+		var ret = now > new Date(this.props.responsibility.datetime);
 		return ret;
 	}
   

@@ -35,10 +35,17 @@ Meteor.methods({
 	
   	var partner = Meteor.users.findOne({ 'services.twitter.screenName': partner_screenname });
   	
-  	if(!partner){
+  	if (!partner){
   		//throw new Meteor.Error('partner-does-not-exist');
       Bert.alert( 'Partner does not exist!', 'danger', 'growl-top-right' );
   	}
+
+    var now = new Date();
+    var overdue = now > new Date(datetime);
+    
+    if (overdue) {
+      Bert.alert( 'Date must be in the future!', 'danger', 'growl-top-right');
+    }
  
     Threats.insert({
 	  userid: this.userId,
