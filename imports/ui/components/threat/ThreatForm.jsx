@@ -24,10 +24,10 @@ export default class ThreatForm extends Component {
 	'threats.insert', partner, location, datetime, (err, res) => {
 	  if (err)
 	  {
-		  if (err.error == "partner-does-not-exist") {
-			alert(err);
-		  }
-	  }else {
+		 //  if (err.error == "partner-does-not-exist") {
+			// alert(err);
+		 //  }
+	  } else {
 		$('#addThreatModal').closeModal();
 	  }
 	});

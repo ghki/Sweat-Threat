@@ -33,11 +33,12 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
 	
-	var partner = Meteor.users.findOne({ 'services.twitter.screenName': partner_screenname });
-	
-	if(!partner){
-		throw new Meteor.Error('partner-does-not-exist');
-	}
+  	var partner = Meteor.users.findOne({ 'services.twitter.screenName': partner_screenname });
+  	
+  	if(!partner){
+  		//throw new Meteor.Error('partner-does-not-exist');
+      Bert.alert( 'Partner does not exist!', 'danger', 'growl-top-right' );
+  	}
  
     Threats.insert({
 	  userid: this.userId,
