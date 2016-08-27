@@ -7,11 +7,11 @@ export default class SendBlackmailModal extends Component {
     super(props);
   }
 
-  checkIn(){
-
+  initiateBlackmail() {
+    // TODO twitter call
   }
   
-  closeModal(){
+  closeModal() {
 	  $("#sendBlackmail" + this.props.responsibility._id).closeModal();
   }
   render() {
@@ -21,7 +21,7 @@ export default class SendBlackmailModal extends Component {
 				<h4>Are you sure you want to send blackmail?</h4>
 			</div>
 			<div className="modal-footer">
-				<a href="#!" className=" modal-action modal-close waves-effect waves-green btn-flat" onClick={this.checkIn.bind(this)}>Yes</a>
+				<a href="#!" className=" modal-action modal-close waves-effect waves-green btn-flat" onClick={this.initiateBlackmail.bind(this)}>Yes</a>
 				<a href="#!" className=" modal-action modal-close waves-effect waves-green btn-flat" onClick={this.closeModal.bind(this)}>No</a>
 			</div>
 		</div>

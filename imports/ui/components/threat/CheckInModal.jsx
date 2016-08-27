@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
+import Threat from './Threat.jsx';
+
 
 // CheckInModal component
 export default class CheckInModal extends Component {
@@ -16,6 +18,10 @@ export default class CheckInModal extends Component {
 	  }else {
 		$('#checkIn' + this.props.threat._id).closeModal();
 	  }
+
+	  //TODO w/ 
+      // https://developers.google.com/maps/documentation/javascript/examples/distance-matrix
+
 	});
   }
   
