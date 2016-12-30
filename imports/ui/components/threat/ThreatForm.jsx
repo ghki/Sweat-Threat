@@ -5,16 +5,18 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Threats } from '../../../api/threats.js';
 import Threat from './Threat.jsx';
 
+// hacky solution to store autocomplete result as an object but whatevs mang
+var autocomplete;
+
 // ThreatForm component
 export default class ThreatForm extends Component {
   constructor(props) {
     super(props);
   }
-
   componentDidMount() {
   	if (GoogleMaps.loaded()) {
 	  	var input = document.getElementById('threatlocation');
-	  	var autocomplete = new google.maps.places.Autocomplete(input);
+	  	autocomplete = new google.maps.places.Autocomplete(input);
 	}
 	else {
 		// alert('hi');
@@ -25,13 +27,17 @@ export default class ThreatForm extends Component {
 
     event.preventDefault();
 
+    var place = autocomplete.getPlace();
+
     // Find the text field via the React ref
     const datetime = ReactDOM.findDOMNode(this.refs.datetime).value.trim();
     const location = ReactDOM.findDOMNode(this.refs.location).value.trim();
+    const latitude = place.geometry.location.lat();
+    const longitude = place.geometry.location.lng();
 	const partner = ReactDOM.findDOMNode(this.refs.partner).value.trim();
 	
 	Meteor.call(
-	'threats.insert', partner, location, datetime, (err, res) => {
+	'threats.insert', partner, location, latitude, longitude, datetime, (err, res) => {
 	  if (err)
 	  {
 		 //  if (err.error == "partner-does-not-exist") {
