@@ -21,5 +21,10 @@ Meteor.startup(() => {
     <Router history={browserHistory} routes={rootRoute} />,
   	//<ThreatForm />, 
   	document.getElementById('render-target')
-  	);
+  );
+
+	GoogleMaps.load({
+		key: 'API-KEY-HERE', 
+		libraries: 'places' 
+	});
 });

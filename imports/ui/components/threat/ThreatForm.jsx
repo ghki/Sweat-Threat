@@ -11,6 +11,16 @@ export default class ThreatForm extends Component {
     super(props);
   }
 
+  componentDidMount() {
+  	if (GoogleMaps.loaded()) {
+	  	var input = document.getElementById('threatlocation');
+	  	var autocomplete = new google.maps.places.Autocomplete(input);
+	}
+	else {
+		// alert('hi');
+	}
+  }
+
   handleSubmit(event) {
 
     event.preventDefault();
@@ -56,14 +66,14 @@ export default class ThreatForm extends Component {
 					required />
 			  </div>
               <div className="row">
-				<div className="input-field col s12">
+				 <div className="input-field col s12">
 					  <input
 						id="threatlocation"
 						type="text"
 						ref="location"
 						className="validate"
 						required />
-					  <label htmlFor="threatlocation">Location</label>
+					  <label htmlFor="threatlocation"></label>
 					  <input className="modal-footer" type="submit" value="Submit"/>
 				 </div>
               </div>
@@ -71,7 +81,7 @@ export default class ThreatForm extends Component {
           }
         </header>
       </div>
-    );
+  );
 
   }
 }

@@ -2,6 +2,21 @@ import React, { Component, PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import Threat from './Threat.jsx';
 
+//ReactiveVar is necessary because Geolocation is asyncronous
+var latLng = new ReactiveVar();
+
+Tracker.autorun(function(computation) {
+    latLng.set(Geolocation.latLng());
+    if (latLng.get()) {
+        computation.stop();
+        // ReactiveVar object is weird so lat and lng are contained in curValue
+        var lat = latLng.curValue.lat;
+        var lng = latLng.curValue.lng;
+        console.log(lat);
+        console.log(lng);
+	}
+});
+
 
 // CheckInModal component
 export default class CheckInModal extends Component {
@@ -21,6 +36,8 @@ export default class CheckInModal extends Component {
 
 	  //TODO w/ 
       // https://developers.google.com/maps/documentation/javascript/examples/distance-matrix
+
+      //use latLng global above to check if user is within 0.5 mile from location
 
 	});
   }
