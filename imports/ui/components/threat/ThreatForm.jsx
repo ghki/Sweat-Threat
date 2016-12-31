@@ -5,8 +5,13 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Threats } from '../../../api/threats.js';
 import Threat from './Threat.jsx';
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import TimePicker from 'material-ui/TimePicker';
+
 // hacky solution to store autocomplete result as an object but whatevs mang
 var autocomplete;
+// time global
+var timeglobal;
 
 // ThreatForm component
 export default class ThreatForm extends Component {
@@ -23,13 +28,18 @@ export default class ThreatForm extends Component {
 	}
   }
 
+  handleOnChange(event, time) {
+  	// apparently time is UTC string
+  	timeglobal = time;
+  }
+
   handleSubmit(event) {
 
     event.preventDefault();
 
     var place = autocomplete.getPlace();
-
     // Find the text field via the React ref
+    const time = timeglobal.toString();
     const datetime = ReactDOM.findDOMNode(this.refs.datetime).value.trim();
     const location = ReactDOM.findDOMNode(this.refs.location).value.trim();
     const latitude = place.geometry.location.lat();
@@ -37,7 +47,7 @@ export default class ThreatForm extends Component {
 	const partner = ReactDOM.findDOMNode(this.refs.partner).value.trim();
 	
 	Meteor.call(
-	'threats.insert', partner, location, latitude, longitude, datetime, (err, res) => {
+	'threats.insert', partner, location, latitude, longitude, datetime, time, (err, res) => {
 	  if (err)
 	  {
 		 //  if (err.error == "partner-does-not-exist") {
@@ -71,6 +81,13 @@ export default class ThreatForm extends Component {
 					className="datepicker"
 					required />
 			  </div>
+			  <div className="row">
+              	<div className="input-field col s12">
+			  	<MuiThemeProvider>
+			  	<TimePicker hintText="12hr Format" ref="time" onChange={this.handleOnChange.bind(this)}/>
+			  	</MuiThemeProvider>
+			  	</div>
+    		  </div>
               <div className="row">
 				 <div className="input-field col s12">
 					  <input
